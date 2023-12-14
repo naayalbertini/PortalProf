@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Área do Professor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="PORTAL/CSS.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .navbar {
+            background-color: #021a33 !important;
+        }
+
+        .navbar-brand {
+            color: #ffffff !important;
+        }
+
+        .form-wrapper {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(185, 70, 3, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .form-floating {
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .btn-success {
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #ffffff;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .btn-success:hover {
+            background-color: #4cae4c;
+            border-color: #398439;
+        }
+
+        .footer {
+            background-color: #ac2200;
+            color: #ffffff;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand text-center" href="#">
+                <i class="fa fa-graduation-cap"></i> Portal do Professor Traços e Gaudí
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-wrapper">
+            <h1 class="mb-4">Login</h1>
+            <form role="form" action="https://www.api.sistema2.com.br/professor/Login.ashx" method="post">
+                <input type="hidden" name="codEscola" value="157">
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="pLogin" placeholder="E-mail" name="pLogin"
+                        required="required">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="pSenha" placeholder="Senha" name="pSenha"
+                        required="required">
+                </div>
+                <div class="mb-3">
+                    <a href="https://api.whatsapp.com/send?phone=5571999183320&text=Ol%C3%A1!%20Estou%20tendo%20problemas%20com%20o%20login%20no%20portal%20do%20professor.%20Poderia%20me%20ajudar."
+                        style="float: right;">Recuperar senha</a>
+                    <input class="form-control" id="pRecuperarSenha" name="pRecuperarSenha" type="hidden" value="N">
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-success" onclick="validaLogin('N');">Entrar</button>
+                    <button type="submit" id="btnSubmit" class="d-none"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">
+                <!-- Footer content -->
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function validaLogin(eMailSenha) {
+            if (document.getElementById("pLogin").value == "") {
+                $("#btnSubmit").trigger("click");
+                return false;
+            }
+
+            if (eMailSenha == "N" && document.getElementById("pSenha").value == "") {
+                $("#btnSubmit").trigger("click");
+                return false;
+            }
+
+            document.getElementById("pRecuperarSenha").value = eMailSenha;
+            document.forms[0].submit();
+        }
+    </script>
+
+</body>
+
+</html>
